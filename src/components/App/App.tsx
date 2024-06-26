@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
-import ImageGallery from "../ImageGallery/ImageGallery";
+import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { getArticles } from "../articles-api";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageModal from "../ImageModal/ImageModal";
 import { ProgressBar } from "react-loader-spinner";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { Articles } from "../../types";
 import css from "../App/App.module.css";
 
 export default function App() {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<Articles[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [page, setPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   // ================================ Modal State =============================
@@ -24,7 +25,7 @@ export default function App() {
     if (searchQuery.trim() === "") {
       return;
     }
-
+    // console.log(articles);
     async function fetchArticles() {
       try {
         setIsLoading(true);
