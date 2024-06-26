@@ -1,0 +1,12 @@
+.progressWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 500px;
+  padding: 10px;
+}
+
+.progressBar {
+  width: 100%;
+}
