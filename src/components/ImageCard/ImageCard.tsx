@@ -1,6 +1,12 @@
+import { FC } from "react";
+import { Item } from "../../types";
 import css from "../ImageCard/ImageCard.module.css";
 
-export default function ImageCard({ item }) {
+interface ImageCardProps {
+  item: Item;
+}
+
+export const ImageCard: FC<ImageCardProps> = ({ item }) => {
   return (
     <div className={css.image}>
       <img
@@ -14,4 +20,4 @@ export default function ImageCard({ item }) {
       </div>
     </div>
   );
-}
+};

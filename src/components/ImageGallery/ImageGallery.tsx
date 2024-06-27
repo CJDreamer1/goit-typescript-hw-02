@@ -1,10 +1,10 @@
-import ImageCard from "../ImageCard/ImageCard";
-import { Articles } from "../../types";
+import { ImageCard } from "../ImageCard/ImageCard";
+import { Item } from "../../types";
 import css from "../ImageGallery/ImageGallery.module.css";
 
 interface ImageGalleryProps {
-  items: Articles[];
-  onImageClick: (item: Articles) => void;
+  items: Item[];
+  onImageClick: (item: Item) => void;
 }
 
 export const ImageGallery: React.FC<ImageGalleryProps> = ({

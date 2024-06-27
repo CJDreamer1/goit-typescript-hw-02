@@ -1,5 +1,13 @@
+import { FC } from "react";
+import { Item } from "../../types";
 import Modal from "react-modal";
 import css from "../ImageModal/ImageModal.module.css";
+
+interface ImageModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  image: Item | null;
+}
 
 const customStyles = {
   content: {
@@ -12,14 +20,18 @@ const customStyles = {
   },
 };
 
-export default function ImageModal({ isOpen, onRequestClose, image }) {
+export const ImageModal: FC<ImageModalProps> = ({
+  isOpen,
+  onRequestClose,
+  image,
+}) => {
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       style={customStyles}
       contentLabel="Image Modal"
-      appElement={document.getElementById("root")}
+      appElement={document.getElementById("root") as HTMLElement}
     >
       {image && (
         <div>
@@ -41,4 +53,4 @@ export default function ImageModal({ isOpen, onRequestClose, image }) {
       )}
     </Modal>
   );
-}
+};

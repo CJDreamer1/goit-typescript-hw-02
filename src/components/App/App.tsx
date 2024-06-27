@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { getArticles } from "../articles-api";
 import SearchBar from "../SearchBar/SearchBar";
-import ImageModal from "../ImageModal/ImageModal";
+import { ImageModal } from "../ImageModal/ImageModal";
 import { ProgressBar } from "react-loader-spinner";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -11,15 +11,15 @@ import css from "../App/App.module.css";
 
 export default function App() {
   const [articles, setArticles] = useState<Articles[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
+  const [hasMore, setHasMore] = useState<boolean>(true);
   // ================================ Modal State =============================
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<Articles | null>(null);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   // ==========================================================================
   useEffect(() => {
     if (searchQuery.trim() === "") {
@@ -54,7 +54,7 @@ export default function App() {
   }, [searchQuery, page]);
   // =====================================================================================>
 
-  const handleSearch = async (topic) => {
+  const handleSearch = async (topic: string) => {
     setSearchQuery(topic);
     setHasMore(true);
     setPage(1);
@@ -66,7 +66,7 @@ export default function App() {
     setPage((prevPage) => prevPage + 1);
   };
   // ========================================= Modal Window ====================
-  const openModal = (image) => {
+  const openModal = (image: Articles) => {
     setSelectedImage(image);
     setIsOpen(true);
   };
