@@ -1,10 +1,3 @@
-export interface Articles {
-  id: string;
-  slug: string;
-  alternative_slugs?: string[];
-  created_at: Date;
-  updated_at: Date;
-}
 export interface Item {
   id: number;
   urls: {
@@ -14,4 +7,5 @@ export interface Item {
   alt_description: string;
   likes: number;
   user: { name: string };
+  image?: string | null;
 }

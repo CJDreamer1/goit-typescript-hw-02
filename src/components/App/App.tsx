@@ -4,13 +4,13 @@ import { getArticles } from "../articles-api";
 import SearchBar from "../SearchBar/SearchBar";
 import { ImageModal } from "../ImageModal/ImageModal";
 import { ProgressBar } from "react-loader-spinner";
-import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import { LoadMoreBtn } from "../LoadMoreBtn/LoadMoreBtn";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { Articles } from "../../types";
+import { Item } from "../../types";
 import css from "../App/App.module.css";
 
 export default function App() {
-  const [articles, setArticles] = useState<Articles[]>([]);
+  const [articles, setArticles] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
@@ -18,7 +18,7 @@ export default function App() {
   const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
   const [hasMore, setHasMore] = useState<boolean>(true);
   // ================================ Modal State =============================
-  const [selectedImage, setSelectedImage] = useState<Articles | null>(null);
+  const [selectedImage, setSelectedImage] = useState<Item | null>(null);
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   // ==========================================================================
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function App() {
     setPage((prevPage) => prevPage + 1);
   };
   // ========================================= Modal Window ====================
-  const openModal = (image: Articles) => {
+  const openModal = (image: Item) => {
     setSelectedImage(image);
     setIsOpen(true);
   };
@@ -76,19 +76,19 @@ export default function App() {
     setSelectedImage(null);
   };
   // =================================== End Modal window ======================
+
   const bar = (
     <ProgressBar
       visible={true}
       height="80"
       width="500"
-      color="#0056b3"
       borderColor="#0056b3"
       ariaLabel="progress-bar-loading"
       wrapperStyle={{}}
       wrapperClass=""
-      className={css.progressBar}
     />
   );
+
   return (
     <div>
       <SearchBar onSearch={handleSearch} />

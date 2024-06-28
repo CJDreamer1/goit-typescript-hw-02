@@ -1,11 +1,19 @@
+import { FC } from "react";
 import css from "../LoadMoreBtn/LoadMoreBtn.module.css";
 
-export default function LoadMoreBtn({
+interface LoadMoreProps {
+  isLoadingMore: boolean;
+  hasMore: boolean;
+  onClick: () => void;
+  whileLoading: JSX.Element;
+}
+
+export const LoadMoreBtn: FC<LoadMoreProps> = ({
   isLoadingMore,
   hasMore,
   onClick,
   whileLoading,
-}) {
+}) => {
   return (
     <div>
       {hasMore && (
@@ -18,4 +26,4 @@ export default function LoadMoreBtn({
       )}
     </div>
   );
-}
+};
